@@ -1,0 +1,154 @@
+﻿@model graduation_project_final.Models.profile_display
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/Content/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/owl/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/css/owl/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Content/webfont/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/Content/css/he-fo.css">
+    <link rel="stylesheet" href="/Content/css/style.css">
+</head>
+
+<body class="profile">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5"
+                         width="150px"
+                         src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-9 border-right">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4 class="text-right">Profile Settings</h4>
+                            </div>
+
+                            <form method="post" enctype="multipart/form-data" id="f">
+                                @Html.HiddenFor(n=>n.user1.id_user)
+                                <div class="row mt-2">
+                                    <div class="col-md-12">
+                                        <label class="labels">Name :</label>
+                                        @Html.TextBoxFor(n=>n.user1.name, new {@class = "form-control" , required = "required" })
+                                        
+                                    </div>
+
+
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <label class="labels">Mobile Number :</label>
+                                        @Html.TextBoxFor(n => n.user1.phone, new { @class = "form-control", required = "required" })
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label class="labels">Type Team  :</label>
+                                        @Html.TextBoxFor(n => n.user1.type_team, new { @class = "form-control", required = "required" })
+
+                                    </div>
+
+
+
+                                    <div class="col-md-12">
+                                        <label class="labels">Email  :</label>
+                                        @Html.TextBoxFor(n => n.user1.email, new { @class = "form-control", required = "required" })
+
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <label class="labels">Education :</label>
+                                        @Html.TextBoxFor(n => n.organization1.education, new { @class = "form-control", required = "required" })
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- <div class="mt-5 text-center"><a href="#"><button
+                                             class="btn btn-primary profile-button" type="button">Save
+                                             Profile</button></a></div>-->
+
+
+                        </div>
+                    </div>
+                    
+
+                    
+                    <div class="col-4">
+
+                        <div class="student-filed mb-3 mt-3">
+                            <a href="javascript:void(0);" class="add_skills" title="Add field">
+                                <i class="fas fa-plus"></i> Add New Skills
+                            </a>
+                            @foreach (var item in ViewBag.skills)
+                            {
+                                @*@Html.TextBoxFor(item, new { @class = "form-control", required = "required" })*@
+
+                                <input type="text" form="f" class="form-control save-skills" placeholder=" Enter skill do you wnat to add" name="field_name[]" value="@item" />
+                            }
+                        </div>
+                       
+                        <input type="submit" class="btn btn-block  save" name="save" value="Save Skills" />
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <!-- <div class="p-3 py-5">
+                      <div class="d-flex justify-content-between align-items-center experience "><span class="edit">Edit
+                              Skills</span><span class="border px-3 p-1 add-experience"><i
+                                  class="fa fa-plus"></i>&nbsp;Skills</span></div><br>
+
+                      <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text"
+                              class="form-control" placeholder="experience" value=""></div> <br>
+
+                      <div class="col-md-12"><label class="labels">Additional Details</label><input type="text"
+                              class="form-control" placeholder="additional details" value=""></div>
+                  </div>-->
+                <!-- <div class="exit">
+                    <a href="profiledisplay.html">Exit</a>
+                </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="/Content/js/jQuery3.js"></script>
+    <script src="/Content/js/main.js"></script>
+    <script src="/Content/js/owl/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <script src="/Content/css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Content/webfont/fontawesome/js/all.min.js"></script>
+</body>
+
+</html>

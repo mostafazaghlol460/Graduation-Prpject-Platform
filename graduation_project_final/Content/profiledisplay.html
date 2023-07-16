@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProfileDisplay</title>
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl/owl.theme.default.min.css">
+    <link rel="stylesheet" href="webfont/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/he-fo.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+
+<body class="profile-display">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="profile-pic-div">
+                    <img src="./img/image.jpg" id="photo">
+                    <input type="file" id="file">
+                    <label for="file" id="uploadBtn">Choose Photo</label>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Info</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12"><label class="labels">Name :</label><input type="text"
+                                class="form-control" placeholder="first name" value="Mostafa Amer" readonly></div>
+
+                        
+
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Mobile Number :</label><input type="text"
+                                class="form-control" placeholder="enter phone number" value="0987653429" readonly></div>
+
+                        <div class="col-md-12"><label class="labels">Address :</label><input type="text"
+                                class="form-control" placeholder="enter address line 1"
+                                value="22 EL-MONTAZA EL-OMRAN STREET" readonly></div>
+
+
+
+                        <div class="col-md-12"><label class="labels">Email :</label><input type="text"
+                                class="form-control" placeholder="enter email id" value="FLFL234@GMAIL.COM" readonly>
+                        </div>
+
+                        <div class="col-md-12"><label class="labels">Education :</label><input type="text"
+                                class="form-control" placeholder="education" value="FRESH GRADUATED" readonly></div>
+
+                    </div>
+                    
+
+                  <!-- <div class="mt-5 text-center"><a href="profile.html"><button class="btn btn-primary profile-button"
+                                type="button">Edit
+                                Profile</button></a></div>--> 
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience"><span class="edit">
+                            Skills</span></div><br>
+
+                            <ul class="list-group">
+                                <li class="list-group-item">Html</li>
+                                <li class="list-group-item">Python</li>
+                                <li class="list-group-item">C++</li>
+                                <li class="list-group-item">Ruby</li>
+                                <li class="list-group-item">Laravel</li>
+                              </ul>
+
+                </div>
+                <div class="exit">
+                    <a href="profile.html">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script>
+        const imgDiv = document.querySelector('.profile-pic-div');
+        const img = document.querySelector('#photo');
+        const file = document.querySelector('#file');
+        const uploadBtn = document.querySelector('#uploadBtn');
+
+        //if user hover on img div 
+
+        imgDiv.addEventListener('mouseenter', function () {
+            uploadBtn.style.display = "block";
+        });
+
+        //if we hover out from img div
+
+        imgDiv.addEventListener('mouseleave', function () {
+            uploadBtn.style.display = "none";
+        });
+
+        //lets work for image showing functionality when we choose an image to upload
+
+        //when we choose a foto to upload
+
+        file.addEventListener('change', function () {
+            //this refers to file
+            const choosedFile = this.files[0];
+
+            if (choosedFile) {
+
+                const reader = new FileReader(); //FileReader is a predefined function of JS
+
+                reader.addEventListener('load', function () {
+                    img.setAttribute('src', reader.result);
+                });
+
+                reader.readAsDataURL(choosedFile);
+
+                //Allright is done
+
+                //please like the video
+                //comment if have any issue related to vide & also rate my work in comment section
+
+                //And aslo please subscribe for more tutorial like this
+
+                //thanks for watching
+            }
+        });
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/jQuery3.js"></script>
+    <script src="js/owl/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+    <script src="css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="webfont/fontawesome/js/all.min.js"></script>
+    <script></script>
+</body>
+
+</html>

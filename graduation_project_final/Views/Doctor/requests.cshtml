@@ -1,0 +1,246 @@
+﻿@model graduation_project_final.Models.req_page
+@{
+    ViewBag.Title = "requests";
+    Layout = "~/Views/Shared/_layoutDoctor.cshtml";
+}
+
+@section panner_image{
+    <section class="slider">
+        <div class="content">
+            <h1>Requests</h1>
+            <p>Requests To Doctor</p>
+        </div>
+    </section>
+    <section class="tabs-for-ideas">
+        <div class="container-fluid">
+            <div class="tabs">
+                <ul class="nav" role="tablist">
+
+                    <li>
+                        <a href="#" class="tab-btn1 active1" id="tab-btn1">Requests to Doctor</a>
+                    </li>
+                    <li>
+                        <a href="#" class="tab-btn2" id="tab-btn2">Requests To Company</a>
+                    </li>
+                    <li>
+                        <a href="#" class="tab-btn3" id="tab-btn3">Suggest Idea To Doctor</a>
+                    </li>
+                    <li>
+                        <a href="#" class="tab-btn4" id="tab-btn4">Suggest Idea To Company</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="contents1" id="contents1">
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>team Code </th>
+                        <th>Idea Name </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{var merge = Model.project_D.Zip(Model.req_D, (n, w) => new { idea = n, req = w });}
+
+                    @foreach (var item in merge)
+                    {
+
+
+                        <tr>
+                            <td class="popup">
+                                <a href="#" id="open-popup">@item.req.group_code</a>
+
+                                <ul class="popup-list" id="popup-list">
+
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> 
+                                    </a>
+                                    @*<a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>*@
+
+
+                                </ul>
+
+
+
+                            </td>
+                            <td>@item.idea.name</td>
+                            <td>
+                                <a href=@Url.Action("notify_accept","Doctor",new {id=item.req.id_request }) class="btn btn-success">Accept</a>
+                                <a href=@Url.Action("notify_reject","Doctor",new {id=item.req.id_request }) class="btn btn-danger">Reject</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="contents2" id="contents2">
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>team Code </th>
+                        <th>Idea Name </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{var merge2 = Model.project_C.Zip(Model.req_C, (n, w) => new { idea = n, req = w });}
+
+                    @foreach (var item in merge2)
+                    {
+
+
+                        <tr>
+                            <td class="popup">
+                                <a href="#" id="open-popup">@item.req.group_code</a>
+
+                                <ul class="popup-list" id="popup-list">
+
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+
+
+                                </ul>
+
+
+
+                            </td>
+                            <td>@item.idea.name</td>
+                            <td>
+                                <a href="#" class="btn btn-success">Accept</a>
+                                <a href="#" class="btn btn-danger">Reject</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="contents3" id="contents3">
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>team Code </th>
+                        <th>Idea Name </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{var merge3 = Model.project_suggest_D.Zip(Model.req_suggest_D, (n, w) => new { idea = n, req = w });}
+
+                    @foreach (var item in merge3)
+                    {
+
+
+                        <tr>
+                            <td class="popup">
+                                <a href="#" id="open-popup">@item.req.group_code</a>
+
+                                <ul class="popup-list" id="popup-list">
+
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+
+
+                                </ul>
+
+
+
+                            </td>
+                            <td>@item.idea.name</td>
+                            <td>
+                                <a href="#" class="btn btn-success">Accept</a>
+                                <a href="#" class="btn btn-danger">Reject</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="contents4" id="contents4">
+        <div class="container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>team Code </th>
+                        <th>Idea Name </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{var merge4 = Model.project_suggest_C.Zip(Model.req_suggest_C, (n, w) => new { idea = n, req = w });}
+
+                    @foreach (var item in merge4)
+                    {
+
+
+                        <tr>
+                            <td class="popup">
+                                <a href="#" id="open-popup">@item.req.group_code</a>
+
+                                <ul class="popup-list" id="popup-list">
+
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+                                    <a href="#">
+                                    <li> <span class=""><img src="./img/pop3.jpg"></span> <span class="">Mostafa Ali</span> </li> </a>
+
+
+                                </ul>
+
+
+
+                            </td>
+                            <td>@item.idea.name</td>
+                            <td>
+                                <a href="#" class="btn btn-success">Accept</a>
+                                <a href="#" class="btn btn-danger">Reject</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+
+
+
+}
+

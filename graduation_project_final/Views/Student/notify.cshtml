@@ -1,0 +1,27 @@
+﻿@model List<graduation_project_final.Models.Request>
+@{
+    ViewBag.Title = "notify";
+    Layout = "~/Views/Shared/_layoutpage.cshtml";
+}
+
+@section notify{
+
+    <div class="tab-content">
+
+        <h1>helwlllllll</h1>
+        @foreach (var item in Model)
+        {
+
+
+            <div class="tab-pane container active" id="doctor">
+                <h6> The team have group named  <a href="#">@item.group_code</a> is Accepted</h6>
+            </div>
+        }
+        <div class="tab-pane container fade" id="company">
+
+                <h6>hi<a href="#">world</a></h6>
+            </div>
+
+    </div>
+}
+

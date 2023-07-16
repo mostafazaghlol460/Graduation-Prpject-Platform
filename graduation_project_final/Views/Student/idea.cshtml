@@ -1,0 +1,216 @@
+﻿@model graduation_project_final.Models.show_project
+@{
+    ViewBag.Title = "idea";
+    Layout = "~/Views/Shared/_layoutpage.cshtml";
+}
+@section panner_image{
+
+    <section class="slider">
+        <div class="content">
+            <h1>Ideas</h1>
+            <p>Discover Ideas Of Companies And Doctor</p>
+        </div>
+    </section>
+
+    <section class="tabs-for-ideas">
+        <div class="container-fluid">
+            <div class="tabs">
+                <ul class="nav" role="tablist">
+
+                    <li>
+                        <a href="#" class="tab1 active1" id="tab1">Doctors</a>
+                    </li>
+                    <li>
+                        <a href="#" class="tab2" id="tab2">Companies</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="content1" id="content1">
+
+        <div class="container">
+            <div class="search-and-suggest row">
+                <div class="search col-8">
+                    <div class=" con-block ">
+                        <div class="relative">
+                            <input type="text" class="" placeholder="Search ideas...">
+                            <a href="#" class="link" id="link">Search</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suggest col-2">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#new-idea-to-doctor-to-company">Suggest Idea</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="list">
+
+            <ul>
+                @foreach (var item in Model.project_doctor)
+                {
+                    <li>
+
+                        <div class="img">
+                            <img src="img/avatar.svg" alt="img">
+                        </div>
+
+                        <div class=" name-of-idea">
+                            <h4>@item.name</h4>
+                        </div>
+
+                        <div class="btn-details">
+                            <a href=@Url.Action("detail_doctor","Student",new { id = item.id_project })>Show Details</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="content2" id="content2">
+
+        <div class="container">
+            <div class="search-and-suggest row">
+                <div class="search col-8">
+                    <div class=" con-block ">
+                        <div class="relative">
+                            <input type="text" class="" placeholder="Search ideas...">
+                            <a href="#" class="link" id="link">Search</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="suggest col-2">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#new-idea-to-doctor" class="link"
+                       id="link">Suggest Idea</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="list">
+
+            <ul>
+                @foreach (var item in Model.project_company)
+                {
+                    <li>
+
+                        <div class="img">
+                            <img src="img/avatar.svg" alt="img">
+                        </div>
+
+                        <div class=" name-of-idea">
+                            <h4>@item.name</h4>
+                        </div>
+
+                        <div class="btn-details">
+                            <a href=@Url.Action("detail_doctor","Student",new { id = item.id_project })>Show Details</a>
+                        </div>
+                    </li>
+                }
+
+                </ul>
+        </div>
+    </section>
+
+    <!--form that send from doctor to company as new idea  -->
+    <div class="modal" id="new-idea-to-doctor">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Suggest New Idea For Company</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form method="post" action="suggest_idea_C" enctype="multipart/form-data">
+                        <label for="">Idea Name :</label><br>
+                        @Html.TextBoxFor(n => n.req_project_student.name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req_project_student.name, null, new { @class = "text-danger" })
+                        
+
+                        <label for="">Email of Doctor :</label><br>
+                        @Html.DropDownListFor(n => n.req1.id_prof, (SelectList)ViewBag.doctor, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req1.id_prof, null, new { @class = "text-danger" })
+                        
+
+
+                        <label for="">Email of Company :</label><br>
+                        @Html.DropDownListFor(n => n.req1.id_company, (SelectList)ViewBag.company, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req1.id_company, null, new { @class = "text-danger" })
+                        
+
+                        <label for="">Code Of Team :</label><br>
+                        @Html.TextBoxFor(n => n.req1.group_code, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req1.group_code, null, new { @class = "text-danger" })
+                        
+
+                        <label for="">Type of Idea  :</label><br>
+                        @Html.TextBoxFor(n => n.req_project_student.type, new { @class = "form-control" , placeholder ="web-apllication"})
+                        @Html.ValidationMessageFor(n => n.req_project_student.type, null, new { @class = "text-danger" })
+                        
+
+                        <label for="">Description Of Idea :</label><br>
+                        @Html.TextAreaFor(n => n.req_project_student.description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req_project_student.description, null, new { @class = "text-danger" })
+                        
+                        <input type="submit" value="Send Request">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--form that send to only doctor  as new idea  -->
+    <div class="modal" id="new-idea-to-doctor-to-company">
+        
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Suggest New Idea For Doctor</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form method="post" action="suggest_idea_D" enctype="multipart/form-data">
+                        <label for="">Idea Name :</label><br>
+                        @Html.TextBoxFor(n => n.req_project_student.name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req_project_student.name, null, new { @class = "text-danger" })
+
+
+                        <label for="">Email of Doctor :</label><br>
+                        @Html.DropDownListFor(n => n.req1.id_prof, (SelectList)ViewBag.doctor, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req1.id_prof, null, new { @class = "text-danger" })
+
+
+
+                        <label for="">Code Of Team :</label><br>
+                        @Html.TextBoxFor(n => n.req1.group_code, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req1.group_code, null, new { @class = "text-danger" })
+
+
+                        <label for="">Type of Idea  :</label><br>
+                        @Html.TextBoxFor(n => n.req_project_student.type, new { @class = "form-control", placeholder = "web-apllication" })
+                        @Html.ValidationMessageFor(n => n.req_project_student.type, null, new { @class = "text-danger" })
+
+                        <label for="">Description Of Idea :</label><br>
+                        @Html.TextAreaFor(n => n.req_project_student.description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(n => n.req_project_student.description, null, new { @class = "text-danger" })<br>
+
+                        <input type="submit" value="Send Request">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    }

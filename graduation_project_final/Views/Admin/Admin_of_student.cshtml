@@ -1,0 +1,65 @@
+﻿@model graduation_project_final.Models.User_Admin
+@{
+    ViewBag.Title = "Admin_of_student";
+
+    ViewBag.type = "ADD New Student";
+
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+@section view_data{
+    @foreach (graduation_project_final.Models.user item in Model.users_view)
+    {
+        <tr>
+            <td>@item.email</td>
+            <td>@item.password</td>
+
+            <td>
+                <span class="status">
+
+
+                    @Html.ActionLink("Delete", "delete_student", new { id = @item.id_user }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("update", "edit_student", new { id = @item.id_user }, new { @class = "btn btn-success" })
+
+                    @*<a href=@Url.Action("") class="btn btn-success" data-bs-toggle="modal" data-bs-target="#for-update-student">Update</a>*@
+
+                    @*<a href="" asp-route-id=@Model.obj_student.id_student class="btn btn-success" data-bs-toggle="modal" data-bs-target="#for-update-student">Update</a>*@
+                </span>
+
+            </td>
+        </tr>
+
+    }
+}
+@section adding_item {
+    <div class="modal" id="for-add-student">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">ADD NEW STUDENT</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="add_new_student" method="post" enctype="multipart/form-data">
+
+                        <label for="">Email of Student :</label><br>
+                        @Html.TextBoxFor(n => n.users_input.email, new { @class = "form-control", placeholder = "Enter your email" })
+                        @Html.ValidationMessageFor(n => n.users_input.email, null, new { @class = "text-danger" })
+                        
+
+                        <label for="">Password of Student:</label><br>
+                        @Html.PasswordFor(n => n.users_input.password, new { @class = "col-12", placeholder = "Enter your password" })
+                        @Html.ValidationMessageFor(n => n.users_input.password, null, new { @class = "text-danger" })
+                        <label for="">enter your role  :</label><br>
+                        @Html.TextBoxFor(n => n.users_input.role, new { @class = "form-control", placeholder = "Enter your role " })
+                        @Html.ValidationMessageFor(n => n.users_input.role, null, new { @class = "text-danger" })
+                        <input type="submit" value="ADD Student">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

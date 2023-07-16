@@ -1,0 +1,162 @@
+﻿@model graduation_project_final.Models.profile_display
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProfileDisplay</title>
+    <link rel="stylesheet" href="/Content/css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/owl/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/css/owl/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Content/webfont/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/Content/css/he-fo.css">
+    <link rel="stylesheet" href="/Content/css/style.css">
+
+
+
+
+    <body class="profile-display">
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="profile-pic-div">
+                        <img src="~/picture/@Model.user1.image" id="photo">
+                        <input type="file" id="file">
+                        <label for="file" id="uploadBtn">Choose Photo</label>
+                    </div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Profile Info</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <label class="labels">Name :</label>
+                                @Html.TextBoxFor(n => n.user1.name, new { @class = "form-control", @readonly = "readonly" })
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label class="labels">Mobile Number :</label>
+                                @Html.TextBoxFor(n => n.user1.phone, new { @class = "form-control", @readonly = "readonly" })
+
+                            </div>
+
+
+
+
+
+                            <div class="col-md-12">
+                                <label class="labels">Email :</label>
+                                @Html.TextBoxFor(n => n.user1.email, new { @class = "form-control", @readonly = "readonly" })
+
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="labels">Education :</label>
+                                @Html.TextBoxFor(n => n.organization1.education, new { @class = "form-control", @readonly = "readonly" })
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- <div class="mt-5 text-center"><a href="profile.html"><button class="btn btn-primary profile-button"
+                                      type="button">Edit
+                                      Profile</button></a></div>-->
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center experience">
+                            <span class="edit">
+                                Skills
+                            </span>
+                        </div><br>
+
+
+                        <ul class="list-group">
+                            @foreach (var item in ViewBag.skills)
+                            {
+                                <li class="list-group-item">@item</li>
+                            }
+
+                        </ul>
+
+                    </div>
+                    <div class="exit">
+                        <a href=@Url.Action("edit_profile","Doctor",new { id=Model.user1.id_user})>Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <script>
+        const imgDiv = document.querySelector('.profile-pic-div');
+        const img = document.querySelector('#photo');
+        const file = document.querySelector('#file');
+        const uploadBtn = document.querySelector('#uploadBtn');
+
+        //if user hover on img div
+
+        imgDiv.addEventListener('mouseenter', function () {
+            uploadBtn.style.display = "block";
+        });
+
+        //if we hover out from img div
+
+        imgDiv.addEventListener('mouseleave', function () {
+            uploadBtn.style.display = "none";
+        });
+
+        //lets work for image showing functionality when we choose an image to upload
+
+        //when we choose a foto to upload
+
+        file.addEventListener('change', function () {
+            //this refers to file
+            const choosedFile = this.files[0];
+
+            if (choosedFile) {
+
+                const reader = new FileReader(); //FileReader is a predefined function of JS
+
+                reader.addEventListener('load', function () {
+                    img.setAttribute('src', reader.result);
+                });
+
+                reader.readAsDataURL(choosedFile);
+
+                //Allright is done
+
+                //please like the video
+                //comment if have any issue related to vide & also rate my work in comment section
+
+                //And aslo please subscribe for more tutorial like this
+
+                //thanks for watching
+            }
+        });
+        </script>
+        <script src="/Content/js/main.js"></script>
+        <script src="/Content/js/jQuery3.js"></script>
+        <script src="/Content/js/owl/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.4/popper.js"></script>
+        <script src="/Content/css/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/Content/webfont/fontawesome/js/all.min.js"></script>
+        <script></script>
+    </body>
+
+</html>
